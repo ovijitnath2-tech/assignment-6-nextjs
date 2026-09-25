@@ -1,43 +1,60 @@
+'use client';
+
 import React from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useWorkout } from '../context/WorkoutContext';
 
-const Navbar = () => {
-    return (
-       <nav className='bg-[#0f1117] text-white px-8 py-4 flex items-center justify-between border-b border-gray-800 '>
-        {/* brand logo */}
-        <div className="flex items-center bg-[#181a20] p-1 rounded-full border border-gray-800" >
-FITLOG
-        </div>
-        {/* middle navigation */}
-        <div className="flex items-center bg-[#181a20] p-1 rounded-full border border-gray-800">
-            <button className="px-5 py-1.5 text-sm font-semibold rounded-full bg-[#a3e635] text-black shadow-md">
-                Workouts
-            </button>
-            <button className="px-5 py-1.5 text-sm font-semibold rounded-full text-gray-400 hover:text-white transition-colors">
-                My Plan
-            </button >
-        </div>
-        {/* right counters */}
-        <div className="flex items-center gap-4 text-sm font-medium text-gray-300">
-            <div className="flex items-center gap-1.5">
-                <span>
-                    plan
-                </span>
-                <span className="bg-[#a3e635] text-black text-xs font-bold px-2 py-0.5 rounded-full">
-0
-                </span>
+export default function Navbar() {
+  const pathname = usePathname();
+  const { plan, saved } = useWorkout();
 
-            </div>
-            <div className="flex items-center gap-1.5">
-                <span>
-Saved
-                </span>
-                <span className="bg-gray-800 text-white text-xs font-bold px-2 py-0.5 rounded-full border border-gray-700">
-0
-                </span>
-            </div>
-        </div>
-       </nav>
-    );
-};
+  return (
+    <nav className="w-full bg-[#0b0c10] border-b border-gray-800 px-6 py-4 flex items-center justify-between fixed top-0 left-0 right-0 z-40">
+      {/* Brand Logo */}
+      <Link href="/" className="font-black text-lg tracking-wider text-white">
+        FITLOG
+      </Link>
 
-export default Navbar;
+      {/* Center Navigation Links */}
+      <div className="flex items-center bg-[#12131a] p-1 rounded-full border border-gray-800">
+        <Link
+          href="/"
+          className={`px-5 py-1.5 rounded-full text-xs font-bold transition-colors ${
+            pathname === '/'
+              ? 'bg-[#a3e635] text-black'
+              : 'text-gray-400 hover:text-white'
+          }`}
+        >
+          Workouts
+        </Link>
+        <Link
+          href="/my-plan"
+          className={`px-5 py-1.5 rounded-full text-xs font-bold transition-colors ${
+            pathname === '/my-plan'
+              ? 'bg-[#a3e635] text-black'
+              : 'text-gray-400 hover:text-white'
+          }`}
+        >
+          My Plan
+        </Link>
+      </div>
+
+      {/* Right Stats Badges */}
+      <div className="flex items-center gap-4 text-xs font-semibold uppercase tracking-wider text-gray-300">
+        <Link href="/my-plan" className="flex items-center hover:opacity-80 transition-opacity">
+          plan{' '}
+          <span className="bg-[#a3e635] text-black px-2 py-0.5 rounded-full font-bold ml-1.5">
+            {plan?.length || 0}
+          </span>
+        </Link>
+        <div className="flex items-center">
+          Saved{' '}
+          <span className="bg-gray-800 text-white px-2 py-0.5 rounded-full font-bold ml-1.5">
+            {saved?.length || 0}
+          </span>
+        </div>
+      </div>
+    </nav>
+  );
+}
