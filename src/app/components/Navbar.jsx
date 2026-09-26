@@ -10,14 +10,14 @@ export default function Navbar() {
   const { plan, saved } = useWorkout();
 
   return (
-    <nav className="w-full bg-[#0b0c10] border-b border-gray-800 px-6 py-4 flex items-center justify-between fixed top-0 left-0 right-0 z-40">
+    <nav className="w-full bg-[#0b0c10] border-b border-gray-800 px-4 sm:px-6 py-3 sm:py-4 flex flex-wrap items-center justify-between gap-3 fixed top-0 left-0 right-0 z-40">
       {/* Brand Logo */}
       <Link href="/" className="font-black text-lg tracking-wider text-white">
         FITLOG
       </Link>
 
       {/* Center Navigation Links */}
-      <div className="flex items-center bg-[#12131a] p-1 rounded-full border border-gray-800">
+      <div className="flex items-center bg-[#12131a] p-1 rounded-full border border-gray-800 order-3 sm:order-2 w-full sm:w-auto justify-center">
         <Link
           href="/"
           className={`px-5 py-1.5 rounded-full text-xs font-bold transition-colors ${
@@ -41,7 +41,7 @@ export default function Navbar() {
       </div>
 
       {/* Right Stats Badges */}
-      <div className="flex items-center gap-4 text-xs font-semibold uppercase tracking-wider text-gray-300">
+      <div className="flex items-center gap-3 sm:gap-4 text-xs font-semibold uppercase tracking-wider text-gray-300 order-2 sm:order-3">
         <Link href="/my-plan" className="flex items-center hover:opacity-80 transition-opacity">
           plan{' '}
           <span className="bg-[#a3e635] text-black px-2 py-0.5 rounded-full font-bold ml-1.5">

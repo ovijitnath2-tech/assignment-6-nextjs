@@ -46,14 +46,14 @@ export default function WorkoutDetailPage({ params }) {
   }
 
   return (
-    <main className="w-full max-w-[1200px] mx-auto px-6 py-8 text-white">
-      <Link href="/" className="text-gray-400 text-xs hover:text-white mb-6 inline-block">
+    <main className="w-full max-w-300 mx-auto px-4 sm:px-6 py-6 sm:py-8 text-white">
+      <Link href="/" className="text-gray-400 text-xs hover:text-white mb-4 sm:mb-6 inline-block">
         ← Back to workouts
       </Link>
 
       <div className="bg-[#12131a] rounded-2xl p-6 border border-gray-800">
         {workout.image && (
-          <div className="w-full h-64 relative mb-6 rounded-xl overflow-hidden">
+          <div className="w-full h-48 sm:h-64 sm:max-h-80 relative mb-6 rounded-xl overflow-hidden bg-[#181920]">
             <img
               src={workout.image}
               alt={workout.name}
@@ -71,17 +71,16 @@ export default function WorkoutDetailPage({ params }) {
           <span className="text-yellow-400">⭐ {workout.rating}</span>
         </div>
 
-        <div className="flex flex-wrap items-center gap-4 mt-8 pt-4 border-t border-gray-800">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mt-6 pt-4 border-t border-gray-800">
           <button
             onClick={() => addToPlan(workout)}
-            className="flex-1 min-w-[200px] bg-[#a3e635] hover:bg-[#8fd622] text-black font-extrabold py-3.5 px-6 rounded-xl text-xs tracking-wider uppercase cursor-pointer"
-          >
+            className="w-full sm:flex-1 bg-[#a3e635] hover:bg-[#8fd622] text-black font-extrabold py-3.5 px-6 rounded-xl text-xs tracking-wider uppercase cursor-pointer">
             + Add to todays plan
           </button>
 
           <button
             onClick={() => addToSaved(workout)}
-            className="flex-1 min-w-[160px] bg-[#12131a] hover:bg-gray-800 border border-gray-700 text-white font-extrabold py-3.5 px-6 rounded-xl text-xs tracking-wider uppercase cursor-pointer"
+            className="w-full sm:flex-1 bg-[#12131a] hover:bg-gray-800 border border-gray-700 text-white font-extrabold py-3.5 px-6 rounded-xl text-xs tracking-wider uppercase cursor-pointer"
           >
             🔖 Save for later
           </button>
