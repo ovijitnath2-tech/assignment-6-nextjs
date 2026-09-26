@@ -14,7 +14,7 @@ export default function WorkoutDetailPage({ params }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://api.abcz.workers.dev/api/fitlog/${workoutId}`)
+    fetch(`https://api.api-store.workers.dev/api/fitlog/${workoutId}`)
       .then((res) => res.json())
       .then((data) => {
         setWorkout(data);
