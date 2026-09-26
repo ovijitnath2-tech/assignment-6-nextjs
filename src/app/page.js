@@ -3,7 +3,7 @@ import Banner from './components/Banner';
 import WorkoutCard from './components/WorkoutCard';
 
 async function getWorkouts() {
-  const res = await fetch('https://api.abcz.workers.dev/api/fitlog');
+  const res = await fetch('https://api.api-store.workers.dev/api/fitlog');
   return res.json();
 }
 
