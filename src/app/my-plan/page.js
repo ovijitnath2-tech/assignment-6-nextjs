@@ -7,11 +7,11 @@ import { useWorkout } from '../context/WorkoutContext';
 export default function MyPlanPage() {
   const { plan, saved, removeFromPlan, removeFromSaved } = useWorkout();
   
-  const [activeTab, setActiveTab] = useState('plan'); // 'plan' | 'saved'
+  const [activeTab, setActiveTab] = useState('plan'); 
   const [isLoading, setIsLoading] = useState(true);
   const [sortBy, setSortBy] = useState('duration');
 
-  // Simulate loading state requirement
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -21,12 +21,12 @@ export default function MyPlanPage() {
 
   const currentList = activeTab === 'plan' ? plan : saved;
 
-  // Calculate stats summary dynamically
+  
   const totalExercises = plan.length;
   const totalMinutes = plan.reduce((sum, item) => sum + (Number(item.duration) || 0), 0);
   const totalCalories = plan.reduce((sum, item) => sum + (Number(item.caloriesBurned) || 0), 0);
 
-  // Sorting functionality
+
   const sortedList = [...currentList].sort((a, b) => {
     if (sortBy === 'duration') return (b.duration || 0) - (a.duration || 0);
     if (sortBy === 'calories') return (b.caloriesBurned || 0) - (a.caloriesBurned || 0);

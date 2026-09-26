@@ -5,7 +5,6 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const WorkoutContext = createContext();
 
 export function WorkoutProvider({ children }) {
-  // Initialize state directly from localStorage
   const [plan, setPlan] = useState(() => {
     if (typeof window !== 'undefined') {
       const localPlan = localStorage.getItem('fitlog_plan');
@@ -24,7 +23,6 @@ export function WorkoutProvider({ children }) {
 
   const [toastMessage, setToastMessage] = useState(null);
 
-  // Save changes to localStorage
   useEffect(() => {
     localStorage.setItem('fitlog_plan', JSON.stringify(plan));
   }, [plan]);

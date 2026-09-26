@@ -8,9 +8,8 @@ export default function Footer() {
       <div className="max-w-[1200px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
         {/* Left Side: Logo Image + Text */}
         <div className="flex items-center gap-2">
-          {/* Replace src with your exact logo image path (e.g., /logo.png or /dumbbell.png in public folder) */}
           <img
-            src='/public/logo.png' 
+            src='/logo.png' 
             alt="FitLog Logo" 
             width={80}
             height={80}

@@ -8,7 +8,6 @@ import { useWorkout } from '../context/WorkoutContext';
 export default function Navbar() {
   const pathname = usePathname();
   const { plan, saved } = useWorkout();
-
   return (
     <nav className="w-full bg-[#0b0c10] border-b border-gray-800 px-4 sm:px-6 py-3 sm:py-4 flex flex-wrap items-center justify-between gap-3 fixed top-0 left-0 right-0 z-40">
       {/* Brand Logo */}
